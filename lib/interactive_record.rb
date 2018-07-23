@@ -53,12 +53,13 @@ class InteractiveRecord
 
   def self.find_by(hash)
     attribute_value = hash.values.first
-    
+
     if attribute_value.is_a?(Integer)
       attribute_value
     else
       attribute_value = "'#{attribute_value}'"
-    end 
-    sql = "SELECT * FROM #{self.table_name} WHERE #{hash.keys.first} = #{}
+    end
+    sql = "SELECT * FROM #{self.table_name} WHERE #{hash.keys.first} = #{attribute_value}"
+    DB[:conn].execute(sql)
   end
 end
