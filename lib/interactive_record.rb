@@ -52,4 +52,10 @@ class InteractiveRecord
   end
 
   def self.find_by(hash)
+    attribute_value = hash.values.first
+    if attribute_value == num
+      attribute_value
+    else
+      '#{attribute_value}'
+  end
 end
